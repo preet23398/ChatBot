@@ -7,7 +7,7 @@ This project is a dynamic chatbot application built using Node.js, Express, and 
 ## Features
 
 - **Chatbot Functionality**: Provides interactive conversations using OpenAI's API.
-- **SMS Integration**: Utilizes Twilio for sending and receiving SMS messages.
+- **Whatsapp/SMS Integration**: Utilizes Twilio for sending and receiving SMS messages.
 - **Document-Based Knowledge**: Loads knowledge from documents for enhancing responses.
 - **Local File Storage**: Stores assistant details in a local JSON file.
 
@@ -18,6 +18,7 @@ This project is a dynamic chatbot application built using Node.js, Express, and 
 - Twilio Account (for SMS integration)
 - OpenAI API Key
 - Knowledge Documents (place in the `knowledge_docs` directory)
+- `.env` file with required variables (see below)
 
 ## Installation
 
@@ -32,9 +33,18 @@ This project is a dynamic chatbot application built using Node.js, Express, and 
 3. **Set Up Environment Variables**
 
   Create a .env file in the root directory of the project and add the following:
-    OPENAI_API_KEY=your_openai_api_key
-    TWILIO_ACCOUNT_SID=your_twilio_account_sid
-    TWILIO_AUTH_TOKEN=your_twilio_auth_token
+   # OpenAI Configuration
+   OPENAI_API_KEY=your_openai_api_key
+
+   # Twilio Configuration
+   TWILIO_ACCOUNT_SID=your_twilio_account_sid
+   TWILIO_AUTH_TOKEN=your_twilio_auth_token
+
+   # Payzana API Integration
+   PAYZANA_SECURITY_KEY=your_security_key
+   PAYZANA_STORE_CODE=your_store_code
+   PAYZANA_COUNTER_NO=your_counter_no
+   PAYZANA_MERCHANT_NAME=your_merchant_name
 
 4. **Prepare Knowledge Documents**
    
