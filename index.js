@@ -6,14 +6,17 @@ const OpenAI = require("openai");
 const { createAssistant } = require("./openai.service");
 const twilio = require("twilio");
 const MessagingResponse = require("twilio").twiml.MessagingResponse;
+require("dotenv").config();
+
 
 const app = express();
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,  // Ensure this environment variable is set
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-const accountSid = "your_twilio_account_sid"; // Placeholder
-const authToken = "your_twilio_auth_token";   // Placeholder
+
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioClient = twilio(accountSid, authToken);
 
 app.use(cors());
@@ -21,11 +24,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const threadStates = {};
 
-const ValidateURL = "your_validate_url"; // Placeholder
-const SecurityKey = "your_security_key"; // Placeholder
-const StoreCode = "your_store_code"; // Placeholder
-const CounterNo = "your_counter_no"; // Placeholder
-const MerchantName = "your_merchant_name"; // Placeholder
+const ValidateURL = "https://payzana.remitap.com/Mobile/api/POSTrans/ValidateCustomer";
+const SecurityKey = process.env.PAYZANA_SECURITY_KEY;
+const StoreCode = process.env.PAYZANA_STORE_CODE;
+const CounterNo = process.env.PAYZANA_COUNTER_NO;
+const MerchantName = process.env.PAYZANA_MERCHANT_NAME;
+
 
 const validateCustomer = async (number) => {
   const payload = {
@@ -36,7 +40,7 @@ const validateCustomer = async (number) => {
     Phone_Number: number,
     Payzana_CARD_No: "",
     Token: "",
-    User: "your_user_id", // Placeholder
+    User: "3013000000672",
     Req_From: "RXL POS BW",
   };
 
